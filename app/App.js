@@ -1,16 +1,17 @@
-// import React from 'react';
-// import Header from './components/Header';
-// import Home from './pages/Home';
-// import Cart from './components/Cart';
+import React from 'react';
+import Home from './pages/Home';
+import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
+import './styles/global.css';
 
-// function App() {
-//   return (
-//     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-//       <Header />
-//       <Cart />
-//       <Home />
-//     </div>
-//   );
-// }
+function App() {
+  return (
+    <ThemeProvider>
+      <CartProvider>
+        <Home />
+      </CartProvider>
+    </ThemeProvider>
+  );
+}
 
-// export default App;
+export default App;
