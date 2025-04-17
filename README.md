@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎮 ValoSkinVault
 
-## Getting Started
+**ValoSkinVault** is a sleek web application that allows Valorant players to browse, filter, and sort all available weapon skins, while also estimating the total monetary value of their collection. With a focus on design and usability, this app gives users a fun and informative way to explore their favorite cosmetics in the game.
 
-First, run the development server:
+## 👥 Group
+**Project by:** Daniel
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌐 Live Preview
+*Coming soon...*
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📦 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🧱 **Display All Skins:** View every available skin from the Valorant API.
+- 🔍 **Filtering & Sorting:**
+  - By **Tier**
+  - By **Skin Line**
+  - By **Weapon Type**
+  - By **Release Year**
+- 💰 **Cart System:**
+  - Add selected skins to a cart to simulate collection value.
+  - View total **VP cost**.
+  - Automatically convert VP cost into **CAD (Canadian Dollars)** using real-time exchange rates.
+- 🎥 **Video Preview Support:** *(Time and API permitting)*
+- 🌑 **Dark Mode:** Smooth user experience with a toggleable dark theme.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Frontend:**
+  - HTML, CSS, JavaScript
+  - [TailwindCSS](https://tailwindcss.com/) (recommended for fast UI dev)
+  - Optional: React or Vue (depending on implementation)
+- **API:**
+  - [Valorant API](https://dash.valorant-api.com/endpoints/weapons)
+  - Currency conversion API (for USD ➡️ CAD)
+- **Icons/UI:**
+  - FontAwesome or Lucide for icons
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧭 Layout Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🔝 Top Bar (Header)
+- **Center:** App name – *ValoSkinVault*
+- **Controls:**
+  - Sort by name, tier, bundle, price, etc.
+  - Filter options (Weapon Type, Tier, Release Year)
+  - Search bar for fast navigation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🛒 Cart (Top-Right Corner)
+- Clickable **cart icon** showing:
+  - List of added skins with:
+    - Skin name
+    - Weapon type
+    - VP cost
+    - Remove option
+  - **Total VP cost**
+  - **Converted CAD value**
+
+### 🧱 Main Display Area
+- **Card/Grid layout** of skins:
+  - Skin image
+  - Name, Tier, Weapon Type
+  - Estimated VP cost
+  - Add to Cart button
+  - Optional: Bundle tag, release info
+
+---
+
+## 📈Potential Future Enhancements
+- Skin **video previews** using available API resources
+- User login and profile tracking (account-based skin inventory)
+- Responsive design for mobile devices
+- More advanced filtering (e.g., by battle pass, event skins)
+
+---
+
+## 🔗 APIs Used
+- 🎯 **Valorant API:** [Weapons Endpoint](https://dash.valorant-api.com/endpoints/weapons)
+- 💱 **Currency Conversion API:** (to convert USD ➡️ CAD for VP pricing)
+
+---
+
+## 📸 Screenshots
+*Coming soon: UI previews of the grid layout, cart dropdown, and dark mode toggle.*
+
+---
+
+## ⚙️ Getting Started
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/your-username/valoskinvault.git
+   cd valoskinvault
