@@ -1,24 +1,20 @@
-import React from 'react';
-import { useCart } from '../context/CartContext';
+import React from "react";
 
-function SkinCard({ skin }) {
-  const { addToCart } = useCart();
-
+const SkinCard = ({ skin }) => {
   return (
-    <div className="border dark:border-gray-700 rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800">
-      <img src={skin.displayIcon} alt={skin.displayName} className="w-full h-40 object-contain p-2" />
-      <div className="p-4">
-        <h2 className="text-xl font-semibold mb-2">{skin.displayName}</h2>
-        <p className="text-sm text-gray-500">Weapon: {skin.weaponType || 'N/A'}</p>
-        <button
-          onClick={() => addToCart({ id: skin.uuid, name: skin.displayName })}
-          className="mt-3 w-full bg-blue-600 text-white px-4 py-2 rounded-lg"
-        >
-          Add to Cart
-        </button>
-      </div>
+    <div className="bg-white dark:bg-zinc-800 rounded-2xl shadow-md overflow-hidden p-4 flex flex-col items-center">
+      <img
+        src={skin.displayIcon}
+        alt={skin.displayName}
+        className="w-full h-40 object-contain mb-4"
+      />
+      <h3 className="text-lg font-semibold text-center">{skin.displayName}</h3>
+      <p className="text-sm text-zinc-500 text-center">
+        {skin.themeUuid ? "Skin Line" : "Single Skin"}
+      </p>
+      {/* Add "Add to Cart" button here later */}
     </div>
   );
-}
+};
 
 export default SkinCard;
