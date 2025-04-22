@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
 import tierNames from "./utils/tierNames";
+import tierCost from "./utils/tierCost";
 
 export default function Page() {
   const [skins, setSkins] = useState([]);
