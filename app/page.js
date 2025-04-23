@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
 import tierNames from "./utils/tierNames";
-import tierCost from "./utils/tierCost";
+import tierCosts from "./utils/tierCosts";
 
 export default function Page() {
   const [skins, setSkins] = useState([]);
@@ -41,9 +41,16 @@ export default function Page() {
         (a, b) => tierOrder.indexOf(a.tierName) - tierOrder.indexOf(b.tierName)
       );
     }
+    else if (sort === "year") {
+      filtered.sort((a, b) => a.releaseDate - b.releaseDate);
+    }
+    else if (sort === "cost") {
+      filtered.sort((a, b) => a.tierCost - b.tierCost);
+    }
 
     return filtered;
   };
+
 
   useEffect(() => {
     const fetchSkins = async () => {
@@ -52,15 +59,21 @@ export default function Page() {
           "https://valorant-api.com/v1/weapons/skins"
         );
         const data = await response.json();
-
+  
         const enriched = data.data
           .filter((skin) => !!skin.displayIcon || skin.chromas.length > 0)
-          .map((skin) => ({
-            ...skin,
-            image: skin.displayIcon || skin.chromas?.[0]?.fullRender || "", // fallback if available
-            tierName: tierNames[skin.contentTierUuid] || "Unknown",
-          }));
-
+          .map((skin) => {
+            const tierName = tierNames[skin.contentTierUuid] || "Unknown";
+            const tierCost = tierCosts[tierName] || 0;
+  
+            return {
+              ...skin,
+              image: skin.displayIcon || skin.chromas?.[0]?.fullRender || "",
+              tierName,
+              tierCost,
+            };
+          });
+  
         setSkins(enriched);
       } catch (error) {
         console.error("Error fetching skins:", error);
@@ -68,9 +81,10 @@ export default function Page() {
         setLoading(false);
       }
     };
-
+  
     fetchSkins();
   }, []);
+  
 
   const handleAddToCart = (skin) => {
     if (!cart.some((item) => item.uuid === skin.uuid)) {

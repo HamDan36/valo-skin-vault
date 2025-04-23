@@ -1,4 +1,4 @@
-const tierCost = {
+const tierCosts = {
   Select: 875,
   Deluxe: 1275,
   Premium: 1775,
@@ -7,4 +7,4 @@ const tierCost = {
   Unknown: 0,
 };
 
-export default tierCost;
+export default tierCosts;
