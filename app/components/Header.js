@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import { useCart } from "../context/CartContext";
 
-const Header = () => {
+const Header = ({ searchTerm, setSearchTerm }) => {
   const { cart, removeFromCart, clearCart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -21,7 +21,7 @@ const Header = () => {
         </h1>
 
         <div className="flex items-center gap-4 relative">
-          <SearchBar />
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
           {/* Vault toggle button */}
           <button

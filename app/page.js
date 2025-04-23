@@ -14,6 +14,8 @@ export default function Page() {
   const [filters, setFilters] = useState({ weaponType: "" });
   const [sort, setSort] = useState("name");
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const handleSortChange = (value) => {
     setSort(value);
   };
@@ -32,6 +34,14 @@ export default function Page() {
       });
     }
 
+    // search
+    if (searchTerm.trim() !== "") {
+      filtered = filtered.filter((skin) =>
+        skin.displayName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // sorting
     if (sort === "name") {
       filtered.sort((a, b) => a.displayName.localeCompare(b.displayName));
     } else if (sort === "tier") {
@@ -82,7 +92,7 @@ export default function Page() {
   return (
     <>
       <div className="sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-700 shadow-md">
-        <Header />
+        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <SortFilterBar
           sort={sort}
           filters={filters}
