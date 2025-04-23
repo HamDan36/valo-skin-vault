@@ -7,6 +7,7 @@ import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
 import tierNames from "./utils/tierNames";
 import tierCosts from "./utils/tierCosts";
+import Cart from "./components/Cart";
 
 export default function Page() {
   const [skins, setSkins] = useState([]);
@@ -41,16 +42,16 @@ export default function Page() {
         (a, b) => tierOrder.indexOf(a.tierName) - tierOrder.indexOf(b.tierName)
       );
     }
-    else if (sort === "year") {
-      filtered.sort((a, b) => a.releaseDate - b.releaseDate);
-    }
+    // else if (sort === "year") {
+    //   filtered.sort((a, b) => a.releaseDate - b.releaseDate);
+    // }
+    // valorant API does not include release year
     else if (sort === "cost") {
       filtered.sort((a, b) => a.tierCost - b.tierCost);
     }
 
     return filtered;
   };
-
 
   useEffect(() => {
     const fetchSkins = async () => {
@@ -59,13 +60,13 @@ export default function Page() {
           "https://valorant-api.com/v1/weapons/skins"
         );
         const data = await response.json();
-  
+
         const enriched = data.data
           .filter((skin) => !!skin.displayIcon || skin.chromas.length > 0)
           .map((skin) => {
-            const tierName = tierNames[skin.contentTierUuid] || "Unknown";
+            const tierName = tierNames[skin.contentTierUuid] || "Select";
             const tierCost = tierCosts[tierName] || 0;
-  
+
             return {
               ...skin,
               image: skin.displayIcon || skin.chromas?.[0]?.fullRender || "",
@@ -73,7 +74,7 @@ export default function Page() {
               tierCost,
             };
           });
-  
+
         setSkins(enriched);
       } catch (error) {
         console.error("Error fetching skins:", error);
@@ -81,15 +82,21 @@ export default function Page() {
         setLoading(false);
       }
     };
-  
+
     fetchSkins();
   }, []);
-  
 
   const handleAddToCart = (skin) => {
     if (!cart.some((item) => item.uuid === skin.uuid)) {
       setCart((prev) => [...prev, skin]);
     }
+  };
+
+  const handleRemoveFromCart = (uuid) => {
+    setCart((prev) => prev.filter((item) => item.uuid !== uuid));
+  };
+  const handleClearCart = () => {
+    setCart([]);
   };
 
   return (
@@ -101,6 +108,11 @@ export default function Page() {
           filters={filters}
           onSortChange={handleSortChange}
           onFilterChange={handleFilterChange}
+        />
+        <Cart
+          cart={cart}
+          onRemove={handleRemoveFromCart}
+          onClear={handleClearCart}
         />
       </div>
 

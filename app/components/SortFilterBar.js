@@ -14,7 +14,8 @@ const SortFilterBar = ({ onSortChange, onFilterChange, filters, sort }) => {
           >
             <option value="name">Name (A–Z)</option>
             <option value="tier">Tier</option>
-            <option value="year">Release Year</option>
+            {/* <option value="year">Release Year</option> */}{" "}
+            {/* valorant api does not have release year */}
             <option value="cost">Cost</option>
           </select>
         </div>
