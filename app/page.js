@@ -64,20 +64,6 @@ export default function Page() {
         );
         const data = await response.json();
 
-        // const enriched = data.data
-        //   .filter((skin) => !!skin.displayIcon || skin.chromas.length > 0)
-        //   .map((skin) => {
-        //     const tierName = tierNames[skin.contentTierUuid] || "Select";
-        //     const tierCost = tierCosts[tierName] || 0;
-
-        //     return {
-        //       ...skin,
-        //       image: skin.displayIcon || skin.chromas?.[0]?.fullRender || "",
-        //       tierName,
-        //       tierCost,
-        //     };
-        //   });
-
         // Filter out skins that are not "Standard" or don't have a contentTierUuid
         const enriched = data.data
           .filter((skin) => {
