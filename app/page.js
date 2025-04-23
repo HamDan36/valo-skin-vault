@@ -7,7 +7,7 @@ import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
 import tierNames from "./utils/tierNames";
 import tierCosts from "./utils/tierCosts";
-import Cart from "./components/Cart";
+import { useCart } from "./context/CartContext";
 
 export default function Page() {
   const [skins, setSkins] = useState([]);
@@ -81,6 +81,10 @@ export default function Page() {
 
     fetchSkins();
   }, []);
+
+  const { cart, removeFromCart, clearCart } = useCart();
+
+  const totalCost = cart.reduce((sum, item) => sum + item.tierCost, 0);
 
   return (
     <>
