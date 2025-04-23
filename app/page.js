@@ -12,7 +12,6 @@ import Cart from "./components/Cart";
 export default function Page() {
   const [skins, setSkins] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const [cart, setCart] = useState([]);
   const [filters, setFilters] = useState({ weaponType: "" });
   const [sort, setSort] = useState("name");
 
@@ -42,10 +41,7 @@ export default function Page() {
         (a, b) => tierOrder.indexOf(a.tierName) - tierOrder.indexOf(b.tierName)
       );
     }
-    // else if (sort === "year") {
-    //   filtered.sort((a, b) => a.releaseDate - b.releaseDate);
-    // }
-    // valorant API does not include release year
+
     else if (sort === "cost") {
       filtered.sort((a, b) => a.tierCost - b.tierCost);
     }
@@ -86,19 +82,6 @@ export default function Page() {
     fetchSkins();
   }, []);
 
-  // const handleAddToCart = (skin) => {
-  //   if (!cart.some((item) => item.uuid === skin.uuid)) {
-  //     setCart((prev) => [...prev, skin]);
-  //   }
-  // };
-
-  // const handleRemoveFromCart = (uuid) => {
-  //   setCart((prev) => prev.filter((item) => item.uuid !== uuid));
-  // };
-  // const handleClearCart = () => {
-  //   setCart([]);
-  // };
-
   return (
     <>
       <div className="sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-700 shadow-md">
@@ -109,19 +92,9 @@ export default function Page() {
           onSortChange={handleSortChange}
           onFilterChange={handleFilterChange}
         />
-        {/* <Cart
-          cart={cart}
-          onRemove={handleRemoveFromCart}
-          onClear={handleClearCart}
-        /> */}
       </div>
 
       <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* <div className="mb-6 text-right">
-          <span className="text-sm text-zinc-600 dark:text-zinc-400">
-            Cart: {cart.length} item{cart.length !== 1 && "s"}
-          </span>
-        </div> */}
 
         {loading ? (
           <p>Loading skins...</p>
@@ -131,7 +104,6 @@ export default function Page() {
               <SkinCard
                 key={skin.uuid}
                 skin={skin}
-                // onAddToCart={handleAddToCart}
               />
             ))}
           </div>

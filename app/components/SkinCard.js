@@ -23,13 +23,6 @@ const SkinCard = ({ skin, onAddToCart }) => {
         )}
       </div>
 
-      {/* <button
-        onClick={() => onAddToCart(skin)}
-        className="mt-auto px-3 py-2 text-sm bg-violet-600 hover:bg-violet-700 text-white rounded-md shadow"
-      >
-        Add to Vault
-      </button> */}
-
       <button
         onClick={() => addToCart(skin)}
         className="mt-auto px-3 py-2 text-sm bg-violet-600 hover:bg-violet-700 text-white rounded-md shadow"
