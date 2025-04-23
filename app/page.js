@@ -12,7 +12,7 @@ import Cart from "./components/Cart";
 export default function Page() {
   const [skins, setSkins] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [filters, setFilters] = useState({ weaponType: "" });
   const [sort, setSort] = useState("name");
 
@@ -86,18 +86,18 @@ export default function Page() {
     fetchSkins();
   }, []);
 
-  const handleAddToCart = (skin) => {
-    if (!cart.some((item) => item.uuid === skin.uuid)) {
-      setCart((prev) => [...prev, skin]);
-    }
-  };
+  // const handleAddToCart = (skin) => {
+  //   if (!cart.some((item) => item.uuid === skin.uuid)) {
+  //     setCart((prev) => [...prev, skin]);
+  //   }
+  // };
 
-  const handleRemoveFromCart = (uuid) => {
-    setCart((prev) => prev.filter((item) => item.uuid !== uuid));
-  };
-  const handleClearCart = () => {
-    setCart([]);
-  };
+  // const handleRemoveFromCart = (uuid) => {
+  //   setCart((prev) => prev.filter((item) => item.uuid !== uuid));
+  // };
+  // const handleClearCart = () => {
+  //   setCart([]);
+  // };
 
   return (
     <>
@@ -109,19 +109,19 @@ export default function Page() {
           onSortChange={handleSortChange}
           onFilterChange={handleFilterChange}
         />
-        <Cart
+        {/* <Cart
           cart={cart}
           onRemove={handleRemoveFromCart}
           onClear={handleClearCart}
-        />
+        /> */}
       </div>
 
       <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="mb-6 text-right">
+        {/* <div className="mb-6 text-right">
           <span className="text-sm text-zinc-600 dark:text-zinc-400">
             Cart: {cart.length} item{cart.length !== 1 && "s"}
           </span>
-        </div>
+        </div> */}
 
         {loading ? (
           <p>Loading skins...</p>
@@ -131,7 +131,7 @@ export default function Page() {
               <SkinCard
                 key={skin.uuid}
                 skin={skin}
-                onAddToCart={handleAddToCart}
+                // onAddToCart={handleAddToCart}
               />
             ))}
           </div>

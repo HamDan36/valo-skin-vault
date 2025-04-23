@@ -5,7 +5,7 @@ import { CartProvider } from './context/CartContext';
 
 export const metadata = {
   title: 'ValoSkinVault',
-  description: 'Track and explore Valorant skins.',
+  description: 'Determine the value of your account with ValoSkinVault',
 };
 
 export default function RootLayout({ children }) {

@@ -1,7 +1,10 @@
 // SkinCard.js
 import React from "react";
+import { useCart } from "../context/CartContext";
 
 const SkinCard = ({ skin, onAddToCart }) => {
+  const { addToCart } = useCart();
+
   return (
     <div className="flex flex-col justify-between border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 p-4">
       <div className="flex flex-col items-center text-center">
@@ -20,8 +23,15 @@ const SkinCard = ({ skin, onAddToCart }) => {
         )}
       </div>
 
-      <button
+      {/* <button
         onClick={() => onAddToCart(skin)}
+        className="mt-auto px-3 py-2 text-sm bg-violet-600 hover:bg-violet-700 text-white rounded-md shadow"
+      >
+        Add to Vault
+      </button> */}
+
+      <button
+        onClick={() => addToCart(skin)}
         className="mt-auto px-3 py-2 text-sm bg-violet-600 hover:bg-violet-700 text-white rounded-md shadow"
       >
         Add to Vault
