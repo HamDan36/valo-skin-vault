@@ -7,7 +7,6 @@ import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
 import tierNames from "./utils/tierNames";
 import tierCosts from "./utils/tierCosts";
-import { useCart } from "./context/CartContext";
 
 export default function Page() {
   const [skins, setSkins] = useState([]);
@@ -40,9 +39,7 @@ export default function Page() {
       filtered.sort(
         (a, b) => tierOrder.indexOf(a.tierName) - tierOrder.indexOf(b.tierName)
       );
-    }
-
-    else if (sort === "cost") {
+    } else if (sort === "cost") {
       filtered.sort((a, b) => a.tierCost - b.tierCost);
     }
 
@@ -82,10 +79,6 @@ export default function Page() {
     fetchSkins();
   }, []);
 
-  const { cart, removeFromCart, clearCart } = useCart();
-
-  const totalCost = cart.reduce((sum, item) => sum + item.tierCost, 0);
-
   return (
     <>
       <div className="sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-700 shadow-md">
@@ -99,16 +92,12 @@ export default function Page() {
       </div>
 
       <main className="max-w-6xl mx-auto px-4 py-8">
-
         {loading ? (
           <p>Loading skins...</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {getVisibleSkins().map((skin) => (
-              <SkinCard
-                key={skin.uuid}
-                skin={skin}
-              />
+              <SkinCard key={skin.uuid} skin={skin} />
             ))}
           </div>
         )}
