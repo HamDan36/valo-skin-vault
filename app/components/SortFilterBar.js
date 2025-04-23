@@ -30,6 +30,8 @@ const SortFilterBar = ({ onSortChange, onFilterChange, filters, sort }) => {
             <option value="Rifle">Rifle</option>
             <option value="Sniper">Sniper</option>
             <option value="Shotgun">Shotgun</option>
+            <option value="SubMachineGuns">SMG</option>
+            <option value="LMG">LMG</option>
             <option value="Pistol">Pistol</option>
             <option value="Melee">Melee</option>
             {/* Add others as needed */}
