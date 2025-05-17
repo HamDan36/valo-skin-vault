@@ -7,8 +7,10 @@ import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
 import tierNames from "./utils/tierNames";
 import tierCosts from "./utils/tierCosts";
+import WelcomeCard from "./components/WelcomeCard";
 
 export default function Page() {
+  const [showWelcome, setShowWelcome] = useState(true);
   const [skins, setSkins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({ weaponType: "" });
@@ -101,6 +103,7 @@ export default function Page() {
 
   return (
     <>
+      {showWelcome && <WelcomeCard onClose={() => setShowWelcome(false)} />}
       <div className="sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-700 shadow-md">
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <SortFilterBar
