@@ -4,7 +4,7 @@ const tierCosts = {
   Premium: 1775,
   Ultra: 2275, // change in the future to depend on each skin variant with a different price
   Exclusive: 2775, // change in the future to depend on each skin variant with a different price
-  Unknown: 0,
+  Unknown: 0, // battlepass skins
 };
 
 export default tierCosts;
