@@ -1,5 +1,4 @@
-// layout.js
-import './globals.css'; // make sure to use global styles here
+import './globals.css'; 
 import { CartProvider } from './context/CartContext';
 
 export const metadata = {
