@@ -61,15 +61,15 @@ export default function Page() {
   useEffect(() => {
     const fetchSkins = async () => {
       try {
-        const data = await getAllSkins(); 
+        const allSkins = await getAllSkins(); 
 
-        // Filter out skins that are not "Standard" or dont have a contentTierUuid
-        const enriched = data.data
+        // Filter out skins that are "Standard" or dont have a contentTierUuid
+        const enriched = allSkins
           .filter((skin) => {
             const isStandard =
               skin.displayName.toLowerCase().includes("standard") ||
               skin.displayName.toLowerCase().includes("default") ||
-              !skin.contentTierUuid; // no tier = likely default skin
+              !skin.contentTierUuid; // no tier = default skin
 
             const hasVisual = !!skin.displayIcon || skin.chromas.length > 0;
 
