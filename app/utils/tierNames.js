@@ -1,4 +1,3 @@
-// tierNames.js
 const tierNames = {
   "0cebb8be-46d7-c12a-d306-e9907bfc5a25": "Select",
   "e046854e-406c-37f4-6607-19a9ba8426fc": "Deluxe",
