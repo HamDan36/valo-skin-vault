@@ -1,3 +1,4 @@
+// Header.js
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import { useCart } from "../context/CartContext";
