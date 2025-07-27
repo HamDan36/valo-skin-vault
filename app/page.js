@@ -1,10 +1,10 @@
-// //page.js
 "use client";
 
 import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
+import {getAllSkins} from "./services/valorantAPI"; 
 import tierNames from "./utils/tierNames";
 import tierCosts from "./utils/tierCosts";
 import WelcomeCard from "./components/WelcomeCard";
@@ -61,12 +61,9 @@ export default function Page() {
   useEffect(() => {
     const fetchSkins = async () => {
       try {
-        const response = await fetch(
-          "https://valorant-api.com/v1/weapons/skins"
-        );
-        const data = await response.json();
+        const data = await getAllSkins(); 
 
-        // Filter out skins that are not "Standard" or don't have a contentTierUuid
+        // Filter out skins that are not "Standard" or dont have a contentTierUuid
         const enriched = data.data
           .filter((skin) => {
             const isStandard =

@@ -1,7 +1,21 @@
 const API_BASE = "https://valorant-api.com/v1";
 
 export async function getAllSkins() {
-  const response = await fetch(`${API_BASE}/weapons/skins`);
+  try{
+    const response = await fetch(`${API_BASE}/weapons/skins`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching skins from API: ${response.message}`);
+    }
+  }
+
+  catch (error) {
+    console.error("Failed to fetch skins:", error);
+    throw error;
+  } 
+
   const data = await response.json();
-  return data.data;
+  const allSkins = data.data;
+
+  
 }
