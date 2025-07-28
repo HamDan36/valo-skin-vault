@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import SkinCard from "./components/SkinCard";
 import SortFilterBar from "./components/SortFilterBar";
-import {getAllSkins} from "./services/valorantAPI"; 
+import { getAllSkins } from "./services/valorantAPI";
 import tierNames from "./utils/tierNames";
 import tierCosts from "./utils/tierCosts";
 import WelcomeCard from "./components/WelcomeCard";
@@ -55,33 +55,34 @@ export default function Page() {
       filtered.sort((a, b) => a.tierCost - b.tierCost);
     }
 
+    console.log("Filtered Skins:", filtered);
+
     return filtered;
   };
 
   useEffect(() => {
     const fetchSkins = async () => {
       try {
-        const allSkins = await getAllSkins(); 
+        const allSkins = await getAllSkins();
 
-        // Filter out skins that are "Standard" or dont have a contentTierUuid
+        // Filter out default skin and skins without visual assets
         const enriched = allSkins
           .filter((skin) => {
             const isStandard =
               skin.displayName.toLowerCase().includes("standard") ||
-              skin.displayName.toLowerCase().includes("default") ||
               !skin.contentTierUuid; // no tier = default skin
 
-            const hasVisual = !!skin.displayIcon || skin.chromas.length > 0;
+            const hasVisual = skin.displayIcon || skin.image;
 
             return !isStandard && hasVisual;
           })
           .map((skin) => {
-            const tierName = tierNames[skin.contentTierUuid] || "Select";
-            const tierCost = tierCosts[tierName] || 0;
+            const tierName = tierNames[skin.contentTierUuid] || "Select"; // Default to "Select" if not found
+            const tierCost = tierCosts[tierName] || 0; // Default to 0 if not found
 
             return {
               ...skin,
-              image: skin.displayIcon || skin.chromas?.[0]?.fullRender || "",
+              image: skin.displayIcon || skin.image || "",
               tierName,
               tierCost,
             };
