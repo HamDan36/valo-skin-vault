@@ -65,7 +65,7 @@ export default function Page() {
       try {
         const allSkins = await getAllSkins();
 
-        // Filter out default skin and skins without visual assets
+        //filter out default skin and skins without visual assets
         const enriched = allSkins
           .filter((skin) => {
             const isStandard =
@@ -73,6 +73,7 @@ export default function Page() {
               !skin.contentTierUuid; // no tier = default skin
 
             const hasVisual = skin.displayIcon || skin.image;
+            //exlcude skins without visual assets
 
             return !isStandard && hasVisual;
           })
