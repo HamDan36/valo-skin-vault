@@ -1,3 +1,4 @@
+//manages the cart state 
 'use client'
 import React, { createContext, useContext, useState } from "react";
 
