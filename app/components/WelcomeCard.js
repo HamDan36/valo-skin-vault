@@ -10,8 +10,8 @@ const WelcomeCard = ({ onClose }) => {
         </h2>
         <p className="text-sm text-zinc-600 dark:text-zinc-300 text-center mb-4">
           Use this website to explore and calculate the total cost of your
-          Valorant account. Prices are based on the vp spent on skin purchases
-          and displayed in USD. <br />
+          Valorant account! Prices are based on the vp spent on skin purchases
+          and displayed in CAD. <br />
           This is a personal project and strictly for educational purposes. It
           is not affiliated with Riot Games or tenCent in any way.
         </p>

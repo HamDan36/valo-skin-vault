@@ -77,6 +77,7 @@ export default function Page() {
 
             return !isStandard && hasVisual;
           })
+          //assign tier names and costs
           .map((skin) => {
             const tierName = tierNames[skin.contentTierUuid] || "Select"; // Default to "Select" if not found
             const tierCost = tierCosts[tierName] || 0; // Default to 0 if not found
