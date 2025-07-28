@@ -85,6 +85,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
                   <div className="text-zinc-700 dark:text-zinc-300">
                     ≈{" "}
                     <span className="font-medium">
+                      {/*  Convert VP to CAD */}
                       ${(totalCost * 0.012).toFixed(2)} CAD
                     </span>
                   </div>
