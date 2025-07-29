@@ -29,5 +29,5 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => useContext(CartContext); // Custom hook to access cart context
 
