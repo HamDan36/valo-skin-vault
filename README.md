@@ -1,18 +1,16 @@
-# 🎮 ValoSkinVault
-
 **ValoSkinVault** is a web application that allows users to browse, filter, and sort all available weapon skins, while also estimating the total monetary value of their collection. With a focus on design and usability, this app gives users a fun and informative way to explore their favorite cosmetics in the game.
 Project by: Daniel
 
 ---
 
-## 📦 Features
+## Features
 
--  View every available skin from the Valorant API.
--  **Filtering & Sorting:**
-  - By **Tier**
-  - By **Skin Line**
-  - By **Weapon Type**
-  - By **Release Year**
+- View every available skin from the Valorant API.
+- **Filtering & Sorting:**
+- By **Tier**
+- By **Skin Line**
+- By **Weapon Type**
+- By **Release Year**
 - **Cart System:**
   - Add selected skins to a cart to calculate collection value.
   - View total cost in VP (Valorant Points).
@@ -20,30 +18,31 @@ Project by: Daniel
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend:**
   - HTML, CSS, JavaScript
   - [TailwindCSS](https://tailwindcss.com/)
-  - 
+  -
 - **API:**
   - [Valorant API](https://dash.valorant-api.com/endpoints/weapons)
-  - Currency conversion API (for USD ➡️ CAD)
+  - Currency conversion API (for USD to CAD)
 - **Icons/UI:**
-  - FontAwesome or Lucide for icons
+  - FontAwesome / Lucide for icons
 
 ---
 
-## 🧭 Layout Overview
+## Layout Overview
 
-### 🔝 Top Bar (Header)
-- **Center:** App name – *ValoSkinVault*
+### Top Bar (Header)
+
 - **Menu:**
   - Sort by name, tier, bundle, price, etc.
   - Filter options (Weapon Type, Tier, Release Year)
   - Search bar for fast navigation
 
-### 🛒 Cart (Top-Right Corner)
+### Cart (Top-Right Corner)
+
 - List of added skins with:
   - Skin name
   - Weapon type
@@ -52,7 +51,8 @@ Project by: Daniel
 - **Total VP cost**
 - **Converted CAD value**
 
-### 🧱 Main Display Area
+### Main Display Area
+
 - **Grid layout** of skins:
   - Skin image
   - Name, Tier, Weapon Type
@@ -61,5 +61,6 @@ Project by: Daniel
 
 ---
 
-## 🔗 APIs Used
-- 🎯 **Valorant API:** [Weapons Endpoint](https://dash.valorant-api.com/endpoints/weapons)
+## APIs Used
+
+- **Valorant API:** [Weapons Endpoint](https://dash.valorant-api.com/endpoints/weapons)
