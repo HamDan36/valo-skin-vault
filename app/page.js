@@ -18,17 +18,21 @@ export default function Page() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  // update the type of sorting
   const handleSortChange = (value) => {
-    setSort(value);
+    setSort(value); 
   };
 
+  // update filters state, adds more filters if needed from props
   const handleFilterChange = (type, value) => {
     setFilters((prev) => ({ ...prev, [type]: value }));
   };
 
+  // second array of skins for filtering
   const getVisibleSkins = () => {
-    let filtered = [...skins];
+    let filtered = [...skins];  
 
+    // filter weapon type
     if (filters.weaponType) {
       filtered = filtered.filter((skin) => {
         const category = skin?.assetPath?.toLowerCase();
@@ -47,7 +51,9 @@ export default function Page() {
     if (sort === "name") {
       filtered.sort((a, b) => a.displayName.localeCompare(b.displayName));
     } else if (sort === "tier") {
+      //custom order
       const tierOrder = ["Select", "Deluxe", "Premium", "Ultra", "Exclusive"];
+      // sort skins based on custom order using index
       filtered.sort(
         (a, b) => tierOrder.indexOf(a.tierName) - tierOrder.indexOf(b.tierName)
       );
@@ -60,10 +66,11 @@ export default function Page() {
     return filtered;
   };
 
+  //use hook to fetch skins 
   useEffect(() => {
     const fetchSkins = async () => {
       try {
-        const allSkins = await getAllSkins();
+        const allSkins = await getAllSkins(); // from valorantAPI
 
         //filter out default skin and skins without visual assets
         const enriched = allSkins
@@ -90,6 +97,7 @@ export default function Page() {
             };
           });
 
+        // save processed skins to skins array(state)
         setSkins(enriched);
       } catch (error) {
         console.error("Error fetching skins:", error);
@@ -99,13 +107,15 @@ export default function Page() {
     };
 
     fetchSkins();
-  }, []);
+  }, []); // only run once
 
   return (
     <>
       {showWelcome && <WelcomeCard onClose={() => setShowWelcome(false)} />}
       <div className="sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-700 shadow-md">
-        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        {/* header component, pass search state down */}
+        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
+        {/*pass sorting and filter controls */}
         <SortFilterBar
           sort={sort}
           filters={filters}
@@ -119,6 +129,7 @@ export default function Page() {
           <p>Loading skins...</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* get filtered/sorted skins and renders one skincard component for each */}
             {getVisibleSkins().map((skin) => (
               <SkinCard key={skin.uuid} skin={skin} />
             ))}
